@@ -9,12 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutmeRouteImport } from './routes/aboutme'
+import { Route as UseStateRouteImport } from './routes/useState'
+import { Route as UseQueryRouteImport } from './routes/useQuery'
+import { Route as UseEffectRouteImport } from './routes/useEffect'
+import { Route as UseContextRouteImport } from './routes/useContext'
+import { Route as AboutMeRouteImport } from './routes/aboutMe'
 import { Route as IndexRouteImport } from './routes/index'
 
-const AboutmeRoute = AboutmeRouteImport.update({
-  id: '/aboutme',
-  path: '/aboutme',
+const UseStateRoute = UseStateRouteImport.update({
+  id: '/useState',
+  path: '/useState',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseQueryRoute = UseQueryRouteImport.update({
+  id: '/useQuery',
+  path: '/useQuery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseEffectRoute = UseEffectRouteImport.update({
+  id: '/useEffect',
+  path: '/useEffect',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseContextRoute = UseContextRouteImport.update({
+  id: '/useContext',
+  path: '/useContext',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutMeRoute = AboutMeRouteImport.update({
+  id: '/aboutMe',
+  path: '/aboutMe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +49,100 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/aboutme': typeof AboutmeRoute
+  '/aboutMe': typeof AboutMeRoute
+  '/useContext': typeof UseContextRoute
+  '/useEffect': typeof UseEffectRoute
+  '/useQuery': typeof UseQueryRoute
+  '/useState': typeof UseStateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/aboutme': typeof AboutmeRoute
+  '/aboutMe': typeof AboutMeRoute
+  '/useContext': typeof UseContextRoute
+  '/useEffect': typeof UseEffectRoute
+  '/useQuery': typeof UseQueryRoute
+  '/useState': typeof UseStateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/aboutme': typeof AboutmeRoute
+  '/aboutMe': typeof AboutMeRoute
+  '/useContext': typeof UseContextRoute
+  '/useEffect': typeof UseEffectRoute
+  '/useQuery': typeof UseQueryRoute
+  '/useState': typeof UseStateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aboutme'
+  fullPaths:
+    | '/'
+    | '/aboutMe'
+    | '/useContext'
+    | '/useEffect'
+    | '/useQuery'
+    | '/useState'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aboutme'
-  id: '__root__' | '/' | '/aboutme'
+  to:
+    | '/'
+    | '/aboutMe'
+    | '/useContext'
+    | '/useEffect'
+    | '/useQuery'
+    | '/useState'
+  id:
+    | '__root__'
+    | '/'
+    | '/aboutMe'
+    | '/useContext'
+    | '/useEffect'
+    | '/useQuery'
+    | '/useState'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutmeRoute: typeof AboutmeRoute
+  AboutMeRoute: typeof AboutMeRoute
+  UseContextRoute: typeof UseContextRoute
+  UseEffectRoute: typeof UseEffectRoute
+  UseQueryRoute: typeof UseQueryRoute
+  UseStateRoute: typeof UseStateRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/aboutme': {
-      id: '/aboutme'
-      path: '/aboutme'
-      fullPath: '/aboutme'
-      preLoaderRoute: typeof AboutmeRouteImport
+    '/useState': {
+      id: '/useState'
+      path: '/useState'
+      fullPath: '/useState'
+      preLoaderRoute: typeof UseStateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useQuery': {
+      id: '/useQuery'
+      path: '/useQuery'
+      fullPath: '/useQuery'
+      preLoaderRoute: typeof UseQueryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useEffect': {
+      id: '/useEffect'
+      path: '/useEffect'
+      fullPath: '/useEffect'
+      preLoaderRoute: typeof UseEffectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useContext': {
+      id: '/useContext'
+      path: '/useContext'
+      fullPath: '/useContext'
+      preLoaderRoute: typeof UseContextRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aboutMe': {
+      id: '/aboutMe'
+      path: '/aboutMe'
+      fullPath: '/aboutMe'
+      preLoaderRoute: typeof AboutMeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,7 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutmeRoute: AboutmeRoute,
+  AboutMeRoute: AboutMeRoute,
+  UseContextRoute: UseContextRoute,
+  UseEffectRoute: UseEffectRoute,
+  UseQueryRoute: UseQueryRoute,
+  UseStateRoute: UseStateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
