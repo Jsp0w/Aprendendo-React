@@ -11,33 +11,48 @@ function RouteComponent() {
   const coisasQueAprendi = [
     {
       name:'Use State',
-      description:'Uma pagina para eu aplicar o meu conhecimento sobre o hook useState',
-      url:'./useState'
+      description:'Uma pagina onde eu aplico o meu conhecimento sobre o hook useState, usando uma calculadora',
+      url:'./#/useState'
     },
     {
       name:'Use Context',
-      description:'Uma pagina para eu aplicar o meu conhecimento sobre o hook useContext',
-      url:'./useContext'
+      description:'',
+      url:'./#/useContext'
     },
     {
       name:'Use Effect',
-      description:'Uma pagina para eu aplicar o meu conhecimento sobre o hook useEffect',
-      url:'./useEffect'
+      description:'',
+      url:'./#/useEffect'
     },
     {
       name:'Use Query',
-      description:'Uma pagina para eu aplicar o meu conhecimento sobre o hook useQuery da biblioteca tanstack query',
-      url:'./useQuery'
+      description:'',
+      url:'./#/useQuery'
     },
   ]
 
-const OqueEuAprendi = coisasQueAprendi.slice(0,5).map(data=><li className='w-1/4 h-44 pb-4 flex flex-col justify-between'>
-        <h3 className='text-emerald-900 font-semibold'>
-            {data.name}
-        </h3>
-        <p>{data.description ? data.description : 'no description'}</p>
-        <a href={data.url}>clique aqui para acessar a pagina</a>
-</li>)
+const OqueEuAprendi = coisasQueAprendi.slice(0,5).map(data=>{
+    if (data.description == ''){
+      return(
+        <li className='w-1/4 h-44 pb-4 flex flex-col justify-between'>
+          <h3 className='text-emerald-900 font-semibold'>
+              {data.name}
+          </h3>
+          <p>em breve um exemplo desse hook</p>
+          <a>ainda não ha um link disponivel</a>
+        </li>
+      )
+    }  
+    return(
+        <li className='w-1/4 h-44 pb-4 flex flex-col justify-between'>
+          <h3 className='text-emerald-900 font-semibold'>
+              {data.name}
+          </h3>
+          <p>{data.description}</p>
+          <a href={data.url}>clique aqui para acessar a pagina</a>
+        </li>
+      )
+})
 
   const queryClinet = new QueryClient()
 

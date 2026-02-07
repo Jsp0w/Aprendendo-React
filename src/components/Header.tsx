@@ -14,7 +14,7 @@ export default function Header(){
                         <a href="./">What i learned</a>
                     </li> */}
                     <li>
-                        <a href="./AboutMe">About Me</a>
+                        <a href="./#/AboutMe">Sobre mim</a>
                     </li>
                     {/* <li className="bg-header-bg">
                         <a href="./">My projects</a>

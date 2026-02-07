@@ -8,7 +8,7 @@ export default function FetchGitHub(){
     const {data, error, isLoading} = useQuery<GitHubResponse []>({queryKey:['github'],queryFn:async():Promise<GitHubResponse []> =>{
         const response = await fetch('https://api.github.com/users/Jsp0w/repos')
         const responseData = await response.json() as Promise<GitHubResponse []>
-        return (await responseData).slice(0,4)
+        return (await responseData).slice(1,6)
     }})
 
     if(isLoading){
