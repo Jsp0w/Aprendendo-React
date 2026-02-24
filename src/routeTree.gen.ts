@@ -10,30 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UseStateRouteImport } from './routes/useState'
-import { Route as UseQueryRouteImport } from './routes/useQuery'
-import { Route as UseEffectRouteImport } from './routes/useEffect'
-import { Route as UseContextRouteImport } from './routes/useContext'
 import { Route as AboutMeRouteImport } from './routes/aboutMe'
 import { Route as IndexRouteImport } from './routes/index'
 
 const UseStateRoute = UseStateRouteImport.update({
   id: '/useState',
   path: '/useState',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UseQueryRoute = UseQueryRouteImport.update({
-  id: '/useQuery',
-  path: '/useQuery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UseEffectRoute = UseEffectRouteImport.update({
-  id: '/useEffect',
-  path: '/useEffect',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UseContextRoute = UseContextRouteImport.update({
-  id: '/useContext',
-  path: '/useContext',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutMeRoute = AboutMeRouteImport.update({
@@ -50,61 +32,30 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aboutMe': typeof AboutMeRoute
-  '/useContext': typeof UseContextRoute
-  '/useEffect': typeof UseEffectRoute
-  '/useQuery': typeof UseQueryRoute
   '/useState': typeof UseStateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aboutMe': typeof AboutMeRoute
-  '/useContext': typeof UseContextRoute
-  '/useEffect': typeof UseEffectRoute
-  '/useQuery': typeof UseQueryRoute
   '/useState': typeof UseStateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aboutMe': typeof AboutMeRoute
-  '/useContext': typeof UseContextRoute
-  '/useEffect': typeof UseEffectRoute
-  '/useQuery': typeof UseQueryRoute
   '/useState': typeof UseStateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/aboutMe'
-    | '/useContext'
-    | '/useEffect'
-    | '/useQuery'
-    | '/useState'
+  fullPaths: '/' | '/aboutMe' | '/useState'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/aboutMe'
-    | '/useContext'
-    | '/useEffect'
-    | '/useQuery'
-    | '/useState'
-  id:
-    | '__root__'
-    | '/'
-    | '/aboutMe'
-    | '/useContext'
-    | '/useEffect'
-    | '/useQuery'
-    | '/useState'
+  to: '/' | '/aboutMe' | '/useState'
+  id: '__root__' | '/' | '/aboutMe' | '/useState'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutMeRoute: typeof AboutMeRoute
-  UseContextRoute: typeof UseContextRoute
-  UseEffectRoute: typeof UseEffectRoute
-  UseQueryRoute: typeof UseQueryRoute
   UseStateRoute: typeof UseStateRoute
 }
 
@@ -115,27 +66,6 @@ declare module '@tanstack/react-router' {
       path: '/useState'
       fullPath: '/useState'
       preLoaderRoute: typeof UseStateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/useQuery': {
-      id: '/useQuery'
-      path: '/useQuery'
-      fullPath: '/useQuery'
-      preLoaderRoute: typeof UseQueryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/useEffect': {
-      id: '/useEffect'
-      path: '/useEffect'
-      fullPath: '/useEffect'
-      preLoaderRoute: typeof UseEffectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/useContext': {
-      id: '/useContext'
-      path: '/useContext'
-      fullPath: '/useContext'
-      preLoaderRoute: typeof UseContextRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aboutMe': {
@@ -158,9 +88,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutMeRoute: AboutMeRoute,
-  UseContextRoute: UseContextRoute,
-  UseEffectRoute: UseEffectRoute,
-  UseQueryRoute: UseQueryRoute,
   UseStateRoute: UseStateRoute,
 }
 export const routeTree = rootRouteImport
