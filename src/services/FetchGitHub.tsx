@@ -20,8 +20,8 @@ export default function FetchGitHub(){
     }
 
     return (<>
-        <ul className='flex ml-3'>
-            {data?.map((repo:GitHubResponse)=><li className={'w-1/4 h-44 pb-4 flex flex-col justify-between center'}>
+        <ul className='flex ml-3 max-sm:flex-col'>
+            {data?.map((repo:GitHubResponse)=><li className={'w-1/4 h-44 pb-4 flex flex-col justify-between center max-sm:w-auto max-sm:h-auto'}>
                  <h3 className='text-emerald-900 font-semibold'>
                      {repo.name}
                  </h3>
