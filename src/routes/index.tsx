@@ -32,23 +32,12 @@ function RouteComponent() {
   ]
 
 const OqueEuAprendi = coisasQueAprendi.slice(0,5).map(data=>{
-    if (data.description == ''){
-      return(
-        <li className='w-1/4 h-44 pb-4 flex flex-col justify-between'>
-          <h3 className='text-emerald-900 font-semibold'>
-              {data.name}
-          </h3>
-          <p>em breve um exemplo desse hook</p>
-          <a>ainda não ha um link disponivel</a>
-        </li>
-      )
-    }  
     return(
-        <li className='w-1/4 h-44 pb-4 flex flex-col justify-between'>
+        <li className='w-1/4 h-44 pb-4 flex flex-col justify-between max-sm:w-auto max-sm:h-auto'>
           <h3 className='text-emerald-900 font-semibold'>
               {data.name}
           </h3>
-          <p>{data.description}</p>
+          <p>{data.description == ''? 'em breve um exemplo desse hook' :data.description}</p>
           <a href={data.url}>clique aqui para acessar a pagina</a>
         </li>
       )
