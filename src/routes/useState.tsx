@@ -16,7 +16,7 @@ function RouteComponent() {
 
   return (
     <>
-      <div className='grid grid-cols-4 grid-rows-6 items-center justify-center h-[calc(100dvh-64px)] w-[calc(97px*4+12px*3)] text-3xl gap-3 py-4 m-auto font-bold'>
+      <div className='grid grid-cols-4 grid-rows-6 items-center justify-center h-[calc(100dvh-64px)] w-[calc(97px*4+12px*3)] text-3xl gap-3 py-4 m-auto font-bold max-sm:w-full max-sm:p-4 mt-16'>
         <input className='h-full col-start-1 col-end-5 text-end' onChange={(element)=>{setCalcScreen(element.target.value)}} value={CalcScreen}></input>
         <button className='rounded-3xl h-full bg-stone-500/10 hover: cursor-pointer text-red-600 hover:text-red-500 active:bg-red-600 active:text-white col-start-1 row-start-2 ' onClick={()=>{setCalcScreen('0')}}>AC</button>
         {/* <button className='rounded-3xl h-full bg-stone-500/10 hover: cursor-pointer text-red-600 hover:text-red-500 active:bg-red-600 active:text-white col-start-2 row-start-2 ' onClick={()=>{setCalcScreen(CalcScreen.substring(0,CalcScreen.length-1))}}>C</button> */}
