@@ -4,6 +4,9 @@ import MenuOutline from "./menu-outline"
 export default function Header(){
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
+
+    console.log(screen.width)
+    console.log(screen.height)
     
     return(
         <>
@@ -17,13 +20,13 @@ export default function Header(){
                 </button>
                 <ul className={"flex items-center gap-3 "+(menuIsOpen?'fixed top-16 bg-header-bg w-full h-screen flex-col items-end pr-3':'max-sm:hidden')}>
                     <li>
-                        <a onClick={()=>{menuIsOpen?setMenuIsOpen(false):setMenuIsOpen(true)}} href="./">Home</a>
+                        <a onClick={()=>{menuIsOpen || screen.width >=640 ?setMenuIsOpen(false):setMenuIsOpen(true)}} href="./">Home</a>
                     </li>
                     {/* <li className="bg-header-bg">
                         <a href="./">What i learned</a>
                     </li> */}
                     <li>
-                        <a onClick={()=>{menuIsOpen?setMenuIsOpen(false):setMenuIsOpen(true)}} href="./#/AboutMe">Sobre mim</a>
+                        <a onClick={()=>{menuIsOpen  || screen.width >=640 ?setMenuIsOpen(false):setMenuIsOpen(true)}} href="./#/AboutMe">Sobre mim</a>
                     </li>
                     {/* <li className="bg-header-bg">
                         <a href="./">My projects</a>
